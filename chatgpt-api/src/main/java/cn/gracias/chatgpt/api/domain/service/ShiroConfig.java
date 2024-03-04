@@ -1,6 +1,6 @@
-package cn.gracias.openai.domain.service;
+package cn.gracias.chatgpt.api.domain.service;
 
-import cn.gracias.openai.domain.service.realm.JwtRealm;
+import cn.gracias.chatgpt.api.domain.service.realm.JwtRealm;
 import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
 import org.apache.shiro.mgt.DefaultSubjectDAO;
 import org.apache.shiro.mgt.SubjectFactory;
@@ -25,7 +25,7 @@ public class ShiroConfig {
 
     @Bean
     public SubjectFactory subjectFactory() {
-        class JwtDefaultSubjectFactory extends DefaultWebSubjectFactory {
+        class JwtDefaultSubjectFactory extends DefaultWebSubjectFactory{
             @Override
             public Subject createSubject(SubjectContext context) {
                 context.setSessionCreationEnabled(false);

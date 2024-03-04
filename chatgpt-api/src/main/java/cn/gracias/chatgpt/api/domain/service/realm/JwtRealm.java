@@ -1,7 +1,7 @@
-package cn.gracias.openai.domain.service.realm;
+package cn.gracias.chatgpt.api.domain.service.realm;
 
-import cn.gracias.openai.domain.model.vo.JwtToken;
-import cn.gracias.openai.domain.service.JwtUtil;
+import cn.gracias.chatgpt.api.domain.service.JwtUtil;
+import cn.gracias.chatgpt.api.domain.model.vo.JwtToken;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -29,11 +29,13 @@ public class JwtRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         String jwt = (String) token.getPrincipal();
-        if (jwt == null) throw new NullPointerException("jwtToken 不允许为空");
-
+        if (jwt == null) {
+            throw new NullPointerException("jwtToken 不允许为空");
+        }
         // 判断
-        if (!jwtUtil.isVerify(jwt)) throw new UnknownAccountException();
-
+        if (!jwtUtil.isVerify(jwt)) {
+            throw new UnknownAccountException();
+        }
         // 可以获取username信息，并做一些处理
         String username = (String) jwtUtil.decode(jwt).get("username");
         logger.info("鉴权用户 username：{}", username);

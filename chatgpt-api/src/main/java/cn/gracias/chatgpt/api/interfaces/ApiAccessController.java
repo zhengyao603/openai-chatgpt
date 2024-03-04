@@ -1,6 +1,6 @@
-package cn.gracias.openai.interfaces;
+package cn.gracias.chatgpt.api.interfaces;
 
-import cn.gracias.openai.domain.service.JwtUtil;
+import cn.gracias.chatgpt.api.domain.service.JwtUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

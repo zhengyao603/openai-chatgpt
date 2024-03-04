@@ -1,6 +1,6 @@
-package cn.gracias.openai.domain.service;
+package cn.gracias.chatgpt.api.domain.service;
 
-import cn.gracias.openai.domain.model.vo.JwtToken;
+import cn.gracias.chatgpt.api.domain.model.vo.JwtToken;
 import org.apache.shiro.web.filter.AccessControlFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +23,7 @@ public class JwtFilter extends AccessControlFilter {
      * 所以这里直接返回一个 false，让它走 onAccessDenied 方法流程
      */
     @Override
-    protected boolean isAccessAllowed(ServletRequest servletRequest, ServletResponse servletResponse, Object o) throws Exception {
+    protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) throws Exception {
         return false;
     }
 
@@ -49,9 +49,9 @@ public class JwtFilter extends AccessControlFilter {
     /**
      * 鉴权认证失败时默认返回 401 状态码
      */
-    private void onLoginFail(ServletResponse servletResponse) throws IOException {
-        HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
-        httpServletResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        httpServletResponse.getWriter().write("Auth Err!");
+    private void onLoginFail(ServletResponse response) throws IOException {
+        HttpServletResponse httpResponse = (HttpServletResponse) response;
+        httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        httpResponse.getWriter().write("Auth Err!");
     }
 }
