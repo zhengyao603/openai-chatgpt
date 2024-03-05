@@ -10,7 +10,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.junit.jupiter.api.Test;
@@ -36,17 +35,9 @@ public class ApiTest {
         util.decode(jwtToken).forEach((key, value) -> System.out.println(key + ": " + value));
     }
 
-    /**
-     * 这是一个简单的测试，后续会开发 ChatGPT API
-     * 测试时候，需要先获得授权token
-     * 获取方式；http://api.xfg.im:8080/authorize?username=xfg&password=123 - 此地址失效，阅读评论第一条获取；https://t.zsxq.com/0d3o5FKvc - 获取key后不需要写token了
-     *
-     * 24年 1月 更新
-     * text-davinci-003 已失效不能使用 见下面新的测试方法 test_chatGPT_3_5
-     */
-    @Test
+    @Deprecated
     public void test_chatGPT() throws IOException {
-        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+        CloseableHttpClient httpClient = HttpClients.createDefault();
         // 用获取的 token 替换，默认有效期60分钟。地址非长期有效，只做学习验证。如果api.xfg.im链接已不存在，一种是可以在aws服务部署个自己的。另外是继续往下走就可以不耽误课程学习
         HttpPost httpPost = new HttpPost("https://api.xfg.im/b8b6/v1/completions?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ4ZmciLCJleHAiOjE2ODMyMDQzMzYsImlhdCI6MTY4MzIwMDczNiwianRpIjoiYjM2Njg3ZjgtOWM5Yi00NzE1LWI2ZjctYjM0YmEyNzE2MWE3IiwidXNlcm5hbWUiOiJ4ZmcifQ.qBskmFVqx_0CKXdhtuSpqWn6XqB5Qq1Qu-c6_4-UoDg");
 
@@ -80,7 +71,7 @@ public class ApiTest {
 
         try {
             // 如果你有自己的apihost、apikey也可以替换使用。
-            HttpPost httpPost = new HttpPost("https://service-d6wuqy4n-1320869466.cd.apigw.tencentcs.com/v1/chat/completions");
+            HttpPost httpPost = new HttpPost("https://pro-share-aws-api.zcyai.com/v1/chat/completions");
             String json = "{\n" +
                     "    \"model\": \"gpt-3.5-turbo-1106\",\n" +
                     "    \"max_tokens\": 1024,\n" +
@@ -99,7 +90,7 @@ public class ApiTest {
             StringEntity requestEntity = new StringEntity(json, ContentType.APPLICATION_JSON);
 
             httpPost.setEntity(requestEntity);
-            httpPost.setHeader("Authorization", "Bearer 阅读链接评论置顶第一条获取key https://t.zsxq.com/163o5FKvc");
+            httpPost.setHeader("Authorization", "Bearer sk-ocdfMcwguqbkyUmR59E5AfD22d0142E2947f916fBe7d4755");
             httpPost.setHeader("Content-Type", "application/json");
 
             HttpResponse response = httpClient.execute(httpPost);
