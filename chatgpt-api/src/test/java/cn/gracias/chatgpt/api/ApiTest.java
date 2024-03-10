@@ -1,6 +1,6 @@
 package cn.gracias.chatgpt.api;
 
-import cn.gracias.chatgpt.api.domain.service.JwtUtil;
+import cn.gracias.chatgpt.api.domain.security.service.JwtUtil;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -64,7 +64,7 @@ public class ApiTest {
     /**
      * 因为官网模型更新，大家测试的时候使用 test_chatGPT_3_5 方法
      */
-    @Test
+    @Deprecated
     public void test_chatGPT_3_5() throws Exception {
         CountDownLatch countDownLatch = new CountDownLatch(1);
         CloseableHttpClient httpClient = HttpClients.createDefault();

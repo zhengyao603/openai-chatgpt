@@ -1,7 +1,6 @@
 package cn.gracias.chatgpt.sdk.domain.chat;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.sun.xml.internal.ws.api.message.Message;
 import lombok.Data;
 
 import java.io.Serializable;

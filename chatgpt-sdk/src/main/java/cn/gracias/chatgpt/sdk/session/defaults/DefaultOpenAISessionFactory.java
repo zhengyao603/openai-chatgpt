@@ -36,6 +36,7 @@ public class DefaultOpenAISessionFactory implements OpenAISessionFactory {
                 .writeTimeout(450, TimeUnit.SECONDS)
                 .readTimeout(450, TimeUnit.SECONDS)
                 .build();
+        configuration.setOkHttpClient(okHttpClient);
 
         // 3. 创建 API 服务
         IOpenAIApi openAIApi = new Retrofit.Builder()
@@ -44,7 +45,8 @@ public class DefaultOpenAISessionFactory implements OpenAISessionFactory {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build().create(IOpenAIApi.class);
+        configuration.setOpenAIApi(openAIApi);
 
-        return new DefaultOpenAISession(openAIApi);
+        return new DefaultOpenAISession(configuration);
     }
 }

@@ -1,4 +1,4 @@
-package cn.gracias.chatgpt.api.domain.model.vo;
+package cn.gracias.chatgpt.api.domain.security.model.vo;
 
 import org.apache.shiro.authc.AuthenticationToken;
 

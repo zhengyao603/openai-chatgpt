@@ -10,12 +10,15 @@ import retrofit2.http.POST;
 
 public interface IOpenAIApi {
 
+    String v1_completions = "v1/completions";
+    String v1_chat_completions = "v1/chat/completions";
+
     /**
      * 文本问答，方法废弃
      * @param qaCompletionRequest 请求信息
      * @return                    返回结果
      */
-    @POST("v1/completions")
+    @POST(v1_completions)
     Single<QACompletionResponse> completions(@Body QACompletionRequest qaCompletionRequest);
 
     /**
@@ -23,6 +26,6 @@ public interface IOpenAIApi {
      * @param chatCompletionRequest 请求信息
      * @return                      返回结果
      */
-    @POST("v1/chat/completions")
+    @POST(v1_chat_completions)
     Single<ChatCompletionResponse> completions(@Body ChatCompletionRequest chatCompletionRequest);
 }

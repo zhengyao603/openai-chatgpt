@@ -1,6 +1,6 @@
-package cn.gracias.chatgpt.api.domain.service;
+package cn.gracias.chatgpt.api.domain.security.service;
 
-import cn.gracias.chatgpt.api.domain.model.vo.JwtToken;
+import cn.gracias.chatgpt.api.domain.security.model.vo.JwtToken;
 import org.apache.shiro.web.filter.AccessControlFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

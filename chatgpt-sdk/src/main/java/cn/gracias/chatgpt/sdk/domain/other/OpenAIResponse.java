@@ -9,7 +9,9 @@ import java.util.List;
 public class OpenAIResponse<T> implements Serializable {
 
     private String object;
+
     private List<T> data;
+
     private Error error;
 
     @Data

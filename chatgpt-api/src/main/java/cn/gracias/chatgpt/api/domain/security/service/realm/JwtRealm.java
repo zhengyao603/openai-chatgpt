@@ -1,7 +1,7 @@
-package cn.gracias.chatgpt.api.domain.service.realm;
+package cn.gracias.chatgpt.api.domain.security.service.realm;
 
-import cn.gracias.chatgpt.api.domain.service.JwtUtil;
-import cn.gracias.chatgpt.api.domain.model.vo.JwtToken;
+import cn.gracias.chatgpt.api.domain.security.service.JwtUtil;
+import cn.gracias.chatgpt.api.domain.security.model.vo.JwtToken;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;

@@ -1,4 +1,4 @@
-package cn.gracias.chatgpt.api.domain.service;
+package cn.gracias.chatgpt.api.domain.security.service;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;

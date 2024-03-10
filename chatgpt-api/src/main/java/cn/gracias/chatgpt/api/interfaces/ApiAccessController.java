@@ -1,6 +1,6 @@
 package cn.gracias.chatgpt.api.interfaces;
 
-import cn.gracias.chatgpt.api.domain.service.JwtUtil;
+import cn.gracias.chatgpt.api.domain.security.service.JwtUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -17,8 +17,11 @@ public class ApiAccessController {
     private Logger logger = LoggerFactory.getLogger(ApiAccessController.class);
 
     /**
-     * http://localhost:8080/authorize?username=zzy&password=123
+     * 1. 本地访问；http://localhost:8080/authorize?username=xfg&password=123
+     * 2. 云服务访问；http://751dac1b.r26.cpolar.top:8080/authorize?username=xfg&password=123
+     * 3. 内网穿透；在 cpolar 中执行内网穿透后拿到公网可访问服务的域名  http://751dac1b.r26.cpolar.top
      */
+
     @RequestMapping("/authorize")
     public ResponseEntity<Map<String, String>> authorize(String username, String password) {
         Map<String, String> map = new HashMap<>();
