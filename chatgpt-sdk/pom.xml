@@ -105,7 +105,7 @@
     </dependencies>
 
     <build>
-        <finalName>chatgpt-sdk-java</finalName>
+        <finalName>chatgpt-sdk</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
